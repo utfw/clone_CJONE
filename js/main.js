@@ -28,8 +28,6 @@ gnbmenu.forEach((el,i) =>{
   })
 })
 
-
-
 const srch_btn = document.querySelector(".srch_open");
 const srch_box = document.querySelector(".srch");
 
@@ -57,9 +55,11 @@ const loop = document.querySelectorAll(".loop img")
 const flip_gap = 0.05;
 appear.forEach((el,i) =>{
   el.style.animation = `ani 2.85s linear ${i*flip_gap}s 1`;
+  el.setAttribute("alt","animation-appear");
 });
 loop.forEach((el,i) =>{
   el.style.animation = `ani 4.1s linear ${(i*flip_gap)+2.85}s infinite`;
+  el.setAttribute("alt","ainmation-loop");
 })
 
 const quick = document.querySelectorAll(".content1>ul>li>a>span")
@@ -96,7 +96,7 @@ const banner = document.querySelectorAll(".banner_frame section");
 const banner_btns = document.querySelectorAll(".banner .arrow>a");
 const frame = document.querySelector(".banner_frame");
 const play_btn = document.querySelector(".rolling .play");
-const rolling = document.querySelectorAll(".rolling li a");
+const rolling = document.querySelectorAll(".rolling ul li a");
 let width = document.querySelector("body").offsetWidth;
 window.addEventListener("resize", e=>{
   width = document.querySelector("body").offsetWidth;
@@ -118,15 +118,16 @@ banner_btns.forEach((el,i) =>{
   })
 })
 
-let timer = setTimeout(function play(){
+let timer = setInterval(play, 5000);
+
+function play(){
   banner_num++;
   if(banner_num > banner.length-1) banner_num = 0;
   frame.style.left = `${-banner_num*width}px`;
   activation(banner,banner_num,"white");
   secWhite(banner_num);
-  timer = setTimeout(play,5000);
-
-}, 5000)
+  setInterval(timer,5000);
+}
 
 function activation(ob,idx,name){
   for(let el of ob){
@@ -139,20 +140,23 @@ let flag = 1;
 play_btn.addEventListener("click", e=>{
   e.preventDefault();
   if(flag == 1){
-  clearTimeout(timer);
+  clearInterval(timer);
   play_btn.classList.add("pause");
+  flag = 0;
   console.log(`중지`);
   } else {
-    timer = setTimeout(play,5000);
-    flag = 0;
+    timer = setInterval(play,5000);
+    play_btn.classList.remove("pause");
+    flag = 1;
     console.log(`재생`);
   }
 })
 
 rolling.forEach((el,i) =>{
   el.addEventListener("click", e=>{
+    e.preventDefault();
     clearTimeout(timer);
-    banner_num = i
+    banner_num = i;
     frame.style.left = `${-(banner_num)*width}px`;
     activation(banner,banner_num,"white");
     activation(rolling,i,"on");
@@ -167,6 +171,7 @@ let secWhite = (number) =>{
     rolling.forEach((el,i) =>{
       el.classList.add("white");
     })
+    play_btn.classList.add("white");
   }else {
     rolling.forEach((el,i) =>{
       el.classList.remove("white");
@@ -174,6 +179,7 @@ let secWhite = (number) =>{
     banner_btns.forEach((el,i) =>{
       el.classList.remove("white");
     })
+    play_btn.classList.remove("white");
   }
   rolling.forEach((el,i) =>{
     el.classList.remove("on");
@@ -187,11 +193,15 @@ window.addEventListener("scroll", e=>{
   const doughnut_Left_L = document.querySelector(".doughnut_Left_L");
   const doughnut_Left_s = document.querySelector(" .doughnut_Left_s");
   const conbine_Left = document.querySelector(".combine_Left");
-
+  if(parseInt(conbine_Left.style.top) == parseInt(doughnut_Left_s.style.top)){
+    doughnut_Left_s.style.top = `${scroll*0.5}px`;
+    conbine_Left.style.top = doughnut_Left_s.style.top;
+  } else{
   conbine_Left.style.top = `${scroll*0.7}px`;
   doughnut_Left_s.style.top = `${scroll*0.5}px`;
-  doughnut_Left_L.style.top = `${1310-scroll*0.8}px`;
+  }
 
+  doughnut_Left_L.style.top = `${1310-scroll*0.8}px`;
   const doughnut_Center_M = document.querySelector(".doughnut_Center_M");
   const doughnut_Center_s = document.querySelector(" .doughnut_Center_s");
   doughnut_Center_M.style.top = `${scroll*0.7}px`;
@@ -201,10 +211,17 @@ window.addEventListener("scroll", e=>{
   const doughnut_Right_s = document.querySelector(" .doughnut_Right_s");
   const conbine_Right = document.querySelector(".combine_Right");
 
+  if(parseInt(conbine_Right.style.top) == parseInt(doughnut_Right_s.style.top)){
+    doughnut_Right_s.style.top = `${scroll*0.8}px`;
+    conbine_Right.style.top = doughnut_Right_s.style.top
+  } else{
+    doughnut_Right_s.style.top = `${scroll*0.8}px`;
+    conbine_Right.style.top = `${scroll*0.6}px`;
+  }
   doughnut_Right_L.style.top = `${1210-scroll*0.5}px`;
-  doughnut_Right_s.style.top = `${scroll*0.4}px`;
-  conbine_Right.style.top = `${scroll*0.6}px`;
 })
+
+
 
 const lists = document.querySelectorAll(".content3_inner>div>ul>li");
 
@@ -254,23 +271,6 @@ function show(className){
   })
 }
 
-// content3_menu.forEach((el,i) =>{
-//   el.addEventListener("click", e=>{
-//     e.preventDefault();
-//     let menu_a = document.querySelectorAll(".content3_inner>ul>li>a");
-//     activation(menu_a,i,"on");
-//     let className = el.getAttribute("class");
-//     if(!el.classList.contains("all")){
-//       for(let list of all){
-//         if(!list.classList.contains(className)){
-//           list.classList.add("hide");
-//         } else list.classList.remove("hide");
-//       }
-//     }else {
-//       for(let list of all) list.classList.remove("hide"); 
-//     }
-//   });
-// })
 // family
 const btn_family = document.querySelector(".family_site a");
 btn_family.addEventListener("click", e=>{
@@ -278,7 +278,8 @@ btn_family.addEventListener("click", e=>{
   let family = e.currentTarget.parentElement;
   family.classList.toggle("on");
   family.classList.contains("on") ? e.currentTarget.setAttribute("title","열기") : e.currentTarget.setAttribute("title","닫기");
-})
+});
+
 // topbtn
 const btn_toTop = document.querySelector("footer .top");
 btn_toTop.addEventListener("click", e=>{
@@ -295,7 +296,7 @@ window.addEventListener("scroll", e=>{
   if(scrollY >= scroll_point){
     btn_toTop.classList.add("fix");
   } else btn_toTop.classList.remove("fix");
-})
+});
 
 // mob menu
 const mob_btn = document.querySelector(".mobBtn");
@@ -320,7 +321,7 @@ mob_close.addEventListener("click", e=>{
     mob_close.classList.toggle("on");
     bg.classList.remove("on");
   }
-})
+});
 mob_list.forEach((el, i) =>{
   el.addEventListener("click", e=>{
     e.preventDefault();
@@ -330,4 +331,4 @@ mob_list.forEach((el, i) =>{
     } else el.setAttribute("title",`${list_name} 닫기`);
     el.parentElement.classList.toggle("on");
   })
-})
+});
