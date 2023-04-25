@@ -194,14 +194,15 @@ window.addEventListener("scroll", e=>{
   const doughnut_Left_s = document.querySelector(" .doughnut_Left_s");
   const conbine_Left = document.querySelector(".combine_Left");
   if(parseInt(conbine_Left.style.top) == parseInt(doughnut_Left_s.style.top)){
-    doughnut_Left_s.style.top = `${scroll*0.5}px`;
+    // console.log(1)
+    doughnut_Left_s.style.top = `${420+scroll*0.5}px`;
     conbine_Left.style.top = doughnut_Left_s.style.top;
   } else{
-  conbine_Left.style.top = `${scroll*0.7}px`;
-  doughnut_Left_s.style.top = `${scroll*0.5}px`;
+  conbine_Left.style.top = `${70+scroll*0.7}px`;
+  doughnut_Left_s.style.top = `${420+scroll*0.5}px`;
   }
-
   doughnut_Left_L.style.top = `${1310-scroll*0.8}px`;
+  
   const doughnut_Center_M = document.querySelector(".doughnut_Center_M");
   const doughnut_Center_s = document.querySelector(" .doughnut_Center_s");
   doughnut_Center_M.style.top = `${scroll*0.7}px`;
@@ -212,11 +213,12 @@ window.addEventListener("scroll", e=>{
   const conbine_Right = document.querySelector(".combine_Right");
 
   if(parseInt(conbine_Right.style.top) == parseInt(doughnut_Right_s.style.top)){
-    doughnut_Right_s.style.top = `${scroll*0.8}px`;
+    // console.log(2)
+    doughnut_Right_s.style.top = `${360+scroll*0.4}px`;
     conbine_Right.style.top = doughnut_Right_s.style.top
   } else{
-    doughnut_Right_s.style.top = `${scroll*0.8}px`;
-    conbine_Right.style.top = `${scroll*0.6}px`;
+    doughnut_Right_s.style.top = `${360+scroll*0.4}px`;
+    conbine_Right.style.top = `${70+scroll*0.6}px`;
   }
   doughnut_Right_L.style.top = `${1210-scroll*0.5}px`;
 })
