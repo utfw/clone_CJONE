@@ -6,7 +6,7 @@ font-family: 'NanumBarunGothic';
 font-family: 'NanumBarunGothicBold'; */
 /* common */
 body{font-size: 14px;font-family: 'NanumBarunGothic', Arial, sans-serif;letter-spacing: -1px;}
-a{text-decoration: none;}
+a,a:visited{text-decoration: none;color: #222;fonszi: 14px;}
 @font-face {
   font-family: cj_onlyone_medium;
   src: url(../font/CJ_ONLYONE_Medium.ttf);
@@ -276,14 +276,14 @@ div.top.fix{position: absolute;top: -80px;bottom: auto;right: 20px;}
 .header_wrap.on{height: 445px;}
 
 /* 로고 */
-h1.logo{position: absolute;left: 0;top: 67px;}
+h1.logo{z-index: 55;position: absolute;left: 16px;top: 64px;}
 /* 탑메뉴 */
 dl.top_menu{display: flex;justify-content: flex-end;letter-spacing: 0;}
 dl.top_menu>dd{margin-top: 10px;padding: 3px 10px 10px;}
 dl.top_menu>dd a{color: #9f9f9f;font-size: 12px;line-height: 20px;transition: color .4s;}
 dl.top_menu>dd a:hover{color: #fff;}
 
-.top_menu>dd:nth-of-type(5){z-index: 3;position: relative;width: 70px;}
+.top_menu>dd:nth-of-type(5){z-index: 55;position: relative;width: 70px;}
 .top_menu>dd:nth-of-type(5)>a{background: url(../images/ico_gnb_updown.png) no-repeat 100% 5px;padding-right: 13px;}
 .top_menu>dd:nth-of-type(5).on >a{background-position-y: -16px;color: #fff;}
 .top_menu>dd:nth-of-type(5) ul{display: none;position: absolute;}
@@ -294,13 +294,13 @@ dl.top_menu>dd a:hover{color: #fff;}
 
 
 /* 주메뉴 */
-.gnb{}
-.gnb>ul{width: 100%;display: flex;justify-content: center;}
+.gnb>ul{z-index: 44;position: relative;width: 100%;display: flex;justify-content: center;background: url(../images/bg_header.png) repeat-x 0 0;}
 .gnb>ul>li{display: inline-block;position: relative;}
 .gnb>ul>li>a{font-size: 16px;line-height: 75px;padding: 0 30px;}
 .gnb>ul>li a{color: #fff;transition: color 200ms linear 150ms;}
 .gnb>ul>li a:hover{color: #f4790b;}
-.gnb>ul>li>ul{display: none;position: absolute;left: 30px;padding-top: 20px;line-height: 30px;font-size: 14px;}
+
+.gnb>ul>li>ul{display: none;left: 30px;padding: 20px 0 0px 30px;line-height: 30px;font-size: 14px;padding-bottom: 100px;}
 .gnb>ul>li>ul.on{display: block;}
 
 .gnb>ul>li>ul>li>a{position: relative;}
@@ -345,7 +345,6 @@ span.srch_open>a{display: block;width: 24px;height: 24px;margin: 7px auto 0;text
 .banner_frame>section:nth-of-type(2){background: url(../images/20230222_186765a392c71.jpg) no-repeat 0 0;}
 .banner_frame>section:nth-of-type(3){background: url(../images/20230227_186912613c381.jpg) no-repeat 0 0;}
 .banner_frame>section:nth-of-type(4){background: url(../images/20230306_186b44dc90721.jpg) no-repeat 0 0;}
-
 
 .banner_frame>section>div{width: 100%;margin: 0 auto;padding-left: 22px;padding-top: 100px;box-sizing: border-box;}
 .banner_frame>section>div>h3{}
@@ -526,14 +525,14 @@ div.top.fix{position: absolute;top: -80px;bottom: auto;right: 20px;}
 .header_wrap.on{height: 445px;}
 
 /* 로고 */
-h1.logo{position: absolute;left: 0;top: 67px;}
+h1.logo{z-index: 55;position: absolute;right:84%;top: 64px;}
 /* 탑메뉴 */
 dl.top_menu{display: flex;justify-content: flex-end;letter-spacing: 0;}
 dl.top_menu>dd{margin-top: 10px;padding: 3px 10px 10px;}
 dl.top_menu>dd a{color: #9f9f9f;font-size: 12px;line-height: 20px;transition: color .4s;}
 dl.top_menu>dd a:hover{color: #fff;}
 
-.top_menu>dd:nth-of-type(5){z-index: 3;position: relative;width: 70px;}
+.top_menu>dd:nth-of-type(5){z-index: 55;position: relative;width: 70px;}
 .top_menu>dd:nth-of-type(5)>a{background: url(../images/ico_gnb_updown.png) no-repeat 100% 5px;padding-right: 13px;}
 .top_menu>dd:nth-of-type(5).on >a{background-position-y: -16px;color: #fff;}
 .top_menu>dd:nth-of-type(5) ul{display: none;position: absolute;}
@@ -544,13 +543,13 @@ dl.top_menu>dd a:hover{color: #fff;}
 
 
 /* 주메뉴 */
-.gnb{}
-.gnb>ul{width: 100%;display: flex;justify-content: center;}
+.gnb>ul{z-index: 44;position: relative;width: 100%;display: flex;justify-content: center;background: url(../images/bg_header.png) repeat-x 0 0;}
 .gnb>ul>li{display: inline-block;position: relative;}
 .gnb>ul>li>a{font-size: 16px;line-height: 75px;padding: 0 30px;}
 .gnb>ul>li a{color: #fff;transition: color 200ms linear 150ms;}
 .gnb>ul>li a:hover{color: #f4790b;}
-.gnb>ul>li>ul{display: none;position: absolute;left: 30px;padding-top: 20px;line-height: 30px;font-size: 14px;}
+
+.gnb>ul>li>ul{display: none;left: 30px;padding: 20px 0 0px 30px;line-height: 30px;font-size: 14px;padding-bottom: 100px;}
 .gnb>ul>li>ul.on{display: block;}
 
 .gnb>ul>li>ul>li>a{position: relative;}
