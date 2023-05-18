@@ -17,4 +17,4 @@
 
 ## 원본 사이트
 
-[CJ ONE]([https://www.fescaro.com/kr/index.php](https://www.cjone.com/))
+[CJ ONE](https://www.cjone.com/)
